@@ -1,97 +1,93 @@
-# Facebook-Insights-Microservice
+# Facebook Project
 
 ## Overview
-This project is a Facebook Insights Microservice that allows users to fetch and store insights of a given Facebook Page username. The service scrapes relevant details, stores them in a database, and exposes RESTful APIs to retrieve the stored insights with filtering options.
+This project is a Python-based web application that interacts with Facebook data. It includes functionalities for data scraping, API routes for handling posts and pages, and database management.
 
 ## Features
-### Mandatory Features:
-- **Scraper Service**
-  - Extracts basic page details (Name, URL, ID, Profile Picture, Email, Website, Category, Followers, Likes, Creation Date, etc.)
-  - Fetches recent posts (top 25-40 posts)
-  - Retrieves comments on posts
-  - Collects followers and following details (if available)
-- **Database Storage**
-  - Stores scraped data with relationships between entities
-- **API Endpoints**
-  - Get details of a given Facebook Page username
-  - Filter pages by follower count range, name, category, etc.
-  - Retrieve a list of followers and following
-  - Fetch recent 10-15 posts
-  - Pagination support for GET requests
-- **Postman Collection**
-  - A Postman Collection JSON for API testing
+- Facebook data scraping
+- API routes for managing posts and pages
+- Database integration
+- Docker support for containerization
+- Modular and scalable architecture
 
-### Bonus Features:
-- **AI-powered Page Summary** using ChatGPT API or other LLMs
-- **Asynchronous Processing** for scraping, database operations, and API calls
-- **Cloud Storage Integration** (S3, GCS, etc.) to store profile pictures and posts
-- **Caching** with a TTL (Time-To-Live) of 5 minutes
+## Installation
 
-## Tech Stack
-- **Backend:** Python (FastAPI/Django/Flask)
-- **Database:** MySQL/MongoDB
-- **Scraping:** BeautifulSoup/Selenium/Scrapy
-- **Asynchronous Handling:** Celery/Aiohttp
-- **Caching:** Redis
-- **Cloud Storage:** AWS S3/Google Cloud Storage
+### Prerequisites
+- Python 3.x
+- Docker (optional)
+- Virtual environment (recommended)
 
-## Installation & Setup
+### Steps
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/facebook-insights-microservice.git
-   cd facebook-insights-microservice
+   git clone <repository_url>
+   cd facebook_project
    ```
-2. Install dependencies:
+2. Create and activate a virtual environment (optional but recommended):
+   ```sh
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
+3. Install dependencies:
    ```sh
    pip install -r requirements.txt
    ```
-3. Set up environment variables:
-   - Create a `.env` file and configure database and API keys.
-4. Run the database migrations (if applicable):
+4. Configure environment variables in `config.py`.
+5. Run database migrations (if applicable):
    ```sh
-   python manage.py migrate  # For Django
+   python database.py migrate
    ```
-5. Start the application:
+6. Run the application:
    ```sh
-   python app.py  # For Flask
+   python main.py
    ```
 
-## API Endpoints
-### 1. Get Page Details
-```http
-GET /api/page/{username}
-```
-**Query Params:**
-- `followers_min` (optional): Minimum number of followers
-- `followers_max` (optional): Maximum number of followers
-- `category` (optional): Filter by page category
-- `name` (optional): Partial match for page name
+## Usage
+- The application exposes API routes to manage Facebook-related data.
+- Use `scraping.py` to fetch data from Facebook.
+- Modify `config.py` to adjust database and API settings.
+- The API routes are available at `http://localhost:8000/api/`.
 
-### 2. Get Followers List
-```http
-GET /api/page/{username}/followers
-```
+### API Endpoints
+| Method | Endpoint          | Description          |
+|--------|------------------|----------------------|
+| GET    | `/api/pages`     | Fetch all pages     |
+| GET    | `/api/posts`     | Fetch all posts     |
+| POST   | `/api/pages`     | Create a new page   |
+| POST   | `/api/posts`     | Create a new post   |
 
-### 3. Get Recent Posts
-```http
-GET /api/page/{username}/posts?limit=10
+Example usage with `curl`:
+```sh
+curl -X GET http://localhost:8000/api/pages
 ```
 
-### 4. AI Summary of a Page
-```http
-GET /api/page/{username}/summary
+## Docker Support
+To run the project in Docker:
+```sh
+docker build -t facebook_project .
+docker run -p 8000:8000 facebook_project
 ```
 
-## Deliverables
-- [x] Public GitHub Repository
-- [x] README Documentation
-- [ ] Postman Collection (Optional)
-- [ ] Deployed Server Link (Optional)
-- [ ] Demo Video (Optional)
+## Directory Structure
+```
+facebook_project/
+│── app/
+│   ├── config.py
+│   ├── database.py
+│   ├── dockerfile
+│   ├── main.py
+│   ├── models.py
+│   ├── requirements.txt
+│   ├── scraping.py
+│   ├── routes/
+│   │   ├── pages.py
+│   │   ├── posts.py
+│
+```
 
-## Contribution
-Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
+## Contributing
+Contributions are welcome! Please submit a pull request or open an issue for discussion.
 
 ## License
-This project is licensed under the MIT License.
+This project is licensed under [Your License Here].
 
