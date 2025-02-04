@@ -1,4 +1,4 @@
-# Facebook Project
+# Facebook Insights Microservice
 
 ## Overview
 This project is a Python-based web application that interacts with Facebook data. It includes functionalities for data scraping, API routes for handling posts and pages, and database management.
