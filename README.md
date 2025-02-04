@@ -4,7 +4,7 @@
 This project is a Python-based web application that interacts with Facebook data. It includes functionalities for data scraping, API routes for handling posts and pages, and database management.
 
 ## Demo Video
-[![Demo Doccou alpha](https://raw.githubusercontent.com/jadonanshikaaa/Facebook-Insights-Microservice/refs/heads/main/demoVideo.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+[![Demo Doccou alpha](https://raw.githubusercontent.com/jadonanshikaaa/Facebook-Insights-Microservice/refs/heads/main/demoVideo.gif)](https://youtu.be/c4r4fESHprs)
 
 ## Features
 - Facebook data scraping
